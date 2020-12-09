@@ -25,24 +25,43 @@ const input = [
 	1444, 1517, 1167, 1738, 1519, 1263, 1901, 1627,
 	1644, 1771, 1812, 1270, 1497, 1707, 1708, 1396
 ];
-const setInput = new Set(input);
 
-const findSolution = (input) => {
+const sortedInput = input.sort((a, b) => a - b);
+
+const findSolution = (input, sum) => {
 	const number = input.pop();
 	if (!number) {
 		return -1;
 	} else {
-		const diff = 2020 - number;
-		if (setInput.has(diff)) {
-			return [
-				number,
-				diff,
-				number * diff
-			];
+		const diff = sum - number;
+		if (diff === 0) {
+			return number;
 		} else {
-			return findSolution(input);
+			return findSolution(input, sum);
 		}
 	}
 };
 
-console.log(findSolution(input));
+let solutionFound = false;
+
+while (sortedInput.length && !solutionFound) {
+	const currentNumber = sortedInput.pop();
+	const currentInput = Array.from(sortedInput);
+	while (currentInput.length) {
+		const toAdd = currentInput.pop();
+		const sum = currentNumber + toAdd;
+		if (sum < 2020) {
+			const solution = findSolution(currentInput, 2020 - sum);
+			if (solution > 0) {
+				console.log(
+					currentNumber,
+					toAdd,
+					solution,
+					currentNumber * toAdd * solution
+				);
+				solutionFound = true;
+				break;
+			}
+		}
+	}
+}
