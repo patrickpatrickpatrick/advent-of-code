@@ -42,9 +42,7 @@ const findSolution = (input, sum) => {
 	}
 };
 
-let solutionFound = false;
-
-while (sortedInput.length && !solutionFound) {
+while (sortedInput.length) {
 	const currentNumber = sortedInput.pop();
 	const currentInput = Array.from(sortedInput);
 	while (currentInput.length) {
@@ -59,8 +57,8 @@ while (sortedInput.length && !solutionFound) {
 					solution,
 					currentNumber * toAdd * solution
 				);
-				solutionFound = true;
-				break;
+				sortedInput.length = 0;
+				currentInput.length = 0;
 			}
 		}
 	}
