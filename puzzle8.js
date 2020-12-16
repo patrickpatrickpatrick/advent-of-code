@@ -1024,7 +1024,7 @@ pid:274974402 hgt:183cm`;
 
 let validCount = 0;
 let newInput = '';
-let regexp = new RegExp('byr:200[0-2]|byr:19[2-9][0-9]|pid:[0-9]{9}|ecl:oth|ecl:amb|ecl:blu|ecl:brn|ecl:gry|ecl:grn|ecl:hzl|hgt:59in|hgt:6[0-9]in|hgt:7[0-6]in|hgt:15[0-9]cm|hgt:16[0-9]cm|hgt:17[0-9]cm|hgt:18[0-9]cm|hgt:19[0-3]cm|iyr:201[0-9]|iyr:2020|eyr:202[0-9]|eyr:2030|hcl:#[a-f0-9]{6}', 'g');
+let regexp = new RegExp('byr:200[0-2]|byr:19[2-9][0-9]|pid:[0-9]{9}\\s|ecl:oth|ecl:amb|ecl:blu|ecl:brn|ecl:gry|ecl:grn|ecl:hzl|hgt:59in|hgt:6[0-9]in|hgt:7[0-6]in|hgt:15[0-9]cm|hgt:16[0-9]cm|hgt:17[0-9]cm|hgt:18[0-9]cm|hgt:19[0-3]cm|iyr:201[0-9]|iyr:2020|eyr:202[0-9]|eyr:2030|hcl:#[a-f0-9]{6}\\s', 'g');
 
 let lines = input.split('\n');
 
