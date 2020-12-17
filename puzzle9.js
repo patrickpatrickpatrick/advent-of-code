@@ -854,6 +854,8 @@ const traverse = (list, row, col) => {
 }
 
 let highestId = -1;
+let lowestId = 99999999999;
+let ids = [];
 
 input.split('\n').forEach(line => {
 	let row = {
@@ -866,9 +868,21 @@ input.split('\n').forEach(line => {
 	};
 
 	const { id } = traverse(line.split(''), row, col);
+
+	ids.push(id);
+
 	if (id > highestId) {
 		highestId = id;
 	}
+
+	if (id < lowestId) {
+		lowestId = id;
+	}
 });
 
+const total = Array.from(Array(highestId + 1).keys()).slice(lowestId).reduce((sum, x) => sum + x);
+const otherTotal = ids.reduce((sum, x) => sum + x);
+
 console.log(highestId);
+console.log(lowestId);
+console.log(total - otherTotal);
