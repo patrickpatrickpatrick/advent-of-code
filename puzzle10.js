@@ -2147,8 +2147,7 @@ lines.forEach((line, i) => {
 		}
 
 		const answers = Array.from(new Set(newInput.split('')));
-		console.log(sizeOfGroup);
-		console.log(newInput);
+
 		answers.forEach((answer) => {
 			validCount += (Array.from(newInput.matchAll(new RegExp(answer, 'g'))).length === sizeOfGroup) ? 1 : 0
 		});
